@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Clock, BookOpen, CheckCircle2, PlayCircle } from "lucide-react";
 import { Course } from "./CourseCard";
+import { toast } from "sonner";
 
 interface CourseDetailProps {
   course: Course | null;
@@ -88,7 +89,13 @@ export const CourseDetail = ({ course, isOpen, onClose, onToggleComplete }: Cour
                 </>
               )}
             </Button>
-            <Button className="flex-1">
+            <Button 
+              className="flex-1"
+              onClick={() => {
+                toast.success(`Starting "${course.title}"! Let's learn! 🚀`);
+                onClose();
+              }}
+            >
               <PlayCircle className="w-4 h-4 mr-2" />
               Start Learning
             </Button>
